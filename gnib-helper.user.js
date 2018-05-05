@@ -32,14 +32,20 @@
 
     const resultElements = {};
     const formatResults = function(cat, type, result) {
+        if (!resultElements['container']) {
+            resultElements['container'] = document.createElement('div'); 
+            resultElements['container'].style.cssText = 'display: flex';
+            document.getElementById("dvInputHead").appendChild(resultElements['container']);
+        }
+
         if (!resultElements[cat]) {
             resultElements[cat] = document.createElement('div'); 
-            resultElements[cat].style.cssText = 'display: inline-block; background: #f8f8f8; border: 1px solid #ccc; border-radius: 4px; margin-right: 16px; padding: 16px;'; 
+            resultElements[cat].style.cssText = 'background: #f8f8f8; border: 1px solid #ccc; border-radius: 4px; margin-right: 16px; padding: 16px;'; 
             const catTitle = document.createElement('div');
             catTitle.appendChild(document.createTextNode(cat));
             catTitle.style.cssText = 'font-size: 1.8rem; font-weight:bold; color: rgb(0, 52, 128)';
             resultElements[cat].appendChild(catTitle);
-            document.getElementById("dvInputHead").appendChild(resultElements[cat]);
+            resultElements['container'].appendChild(resultElements[cat]);
             console.debug(resultElements[cat]);
         }
         if (!resultElements[cat][type]) {
@@ -51,14 +57,19 @@
             resultElements[cat].appendChild(resultElements[cat][type]);
         }
         
-        const content = document.createElement('div');
+        const content = document.createElement('ul');
+        content.style.cssText = 'list-style-type:none';
         if (result.empty == 'TRUE') {
-            content.style.cssText = 'font-size: 1.2rem; color: #600';
-            content.appendChild(document.createTextNode('None Available.'));
+            const li = document.createElement('li')
+            li.style.cssText = 'font-size: 1.3rem; color: #600';
+            li.innerHTML = 'None Available.';
+            content.appendChild(li);
         } else {
-            content.style.cssText = 'font-size: 1.2rem; color: #060';
             result.slots.forEach((slot) => {
-                content.appendChild(document.createTextNode(slot.time));  
+                const li = document.createElement('li')
+                li.style.cssText = 'font-size: 1.3rem; color: #060';
+                li.innerHTML = slot.time;
+                content.appendChild(li);  
             });
         }
         resultElements[cat][type].appendChild(content);  
