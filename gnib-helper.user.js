@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Irish GNIB Booking Helper
 // @namespace    https://github.com/chen-yumin/irish-gnib-booking-helper
-// @version      0.2
+// @version      0.3
 // @description  Auto check appointment availability on the Irish GNIB booking page.
 // @author       Chen Yumin
 // @match        https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm
@@ -32,8 +32,6 @@
 
     const resultElements = {};
     const formatResults = function(cat, type, result) {
-        console.debug(result);
-        console.debug(resultElements[cat]);
         if (!resultElements[cat]) {
             resultElements[cat] = document.createElement('div'); 
             resultElements[cat].style.cssText = 'display: inline-block; background: #f8f8f8; border: 1px solid #ccc; border-radius: 4px; margin-right: 16px; padding: 16px;'; 
