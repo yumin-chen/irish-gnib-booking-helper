@@ -12,7 +12,7 @@
 {
     'use strict';
 
-    const categories = ['Work', 'Study'];
+    const categories = ['Work', 'Study', 'Other'];
     const types = ['New', 'Renewal'];
     const getAppoinmentsLink = function(cat, type) {
         return `https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=${cat}&sbcat=All&typ=${type}`;
