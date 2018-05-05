@@ -5,7 +5,7 @@ This is a [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemo
 
 It gives you the available appointments closest to today at the top of the page, before you filing out the form to look for an appointment.
 
-![Demo](https://github.com/chen-yumin/irish-gnib-booking-helper/raw/master/images/demo.jpg "Irish GNIB Booking Helper")
+![Demo](https://github.com/chen-yumin/irish-gnib-booking-helper/raw/master/images/demo.png "Irish GNIB Booking Helper")
 
 ## Disclaimer
 I am not affiliated with the Irish Naturalisation and Immigration Service. Please use this script at your own risk.
