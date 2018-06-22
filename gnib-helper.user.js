@@ -27,19 +27,19 @@
                     })
                     .catch(error => console.error('Error:', error))
             })
-        })   
+        })
     }
 
     const resultElements = {};
     const formatResults = function(cat, type, result) {
         if (!resultElements['container']) {
-            resultElements['container'] = document.createElement('div'); 
+            resultElements['container'] = document.createElement('div');
             resultElements['container'].style.cssText = 'display: flex';
             document.getElementById("dvInputHead").appendChild(resultElements['container']);
         }
 
         if (!resultElements[cat]) {
-            resultElements[cat] = document.createElement('div'); 
+            resultElements[cat] = document.createElement('div');
             resultElements[cat].style.cssText = 'background: #f8f8f8; border: 1px solid #ccc; border-radius: 4px; margin-right: 16px; padding: 16px;'; 
             const catTitle = document.createElement('div');
             catTitle.appendChild(document.createTextNode(cat));
@@ -56,7 +56,7 @@
             resultElements[cat][type].appendChild(typeTitle);
             resultElements[cat].appendChild(resultElements[cat][type]);
         }
-        
+
         const content = document.createElement('ul');
         content.style.cssText = 'list-style-type:none';
         if (result.empty == 'TRUE') {
@@ -69,10 +69,10 @@
                 const li = document.createElement('li')
                 li.style.cssText = 'font-size: 1.3rem; color: #060';
                 li.innerHTML = slot.time;
-                content.appendChild(li);  
+                content.appendChild(li);
             });
         }
-        resultElements[cat][type].appendChild(content);  
+        resultElements[cat][type].appendChild(content);
     }
 
     checkAvailability();
