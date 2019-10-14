@@ -12,10 +12,12 @@
 {
     'use strict';
 
-    const categories = ['Work', 'Study', 'Other'];
+    const categories = ['All'];
     const types = ['New', 'Renewal'];
     const getAppoinmentsLink = function(cat, type) {
-        return `https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?openpage&cat=${cat}&sbcat=All&typ=${type}`;
+        const k = document.getElementById("k").value
+        const p = document.getElementById("p").value
+        return `https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/(getAppsNear)?readform&cat=All&sbcat=${cat}&typ=${type}&k=${k}&p=${p}`;
     }
 
     const checkAvailability = function() {
@@ -32,20 +34,20 @@
 
     const resultElements = {};
     const formatResults = function(cat, type, result) {
-        if (!resultElements['container']) {
-            resultElements['container'] = document.createElement('div');
-            resultElements['container'].style.cssText = 'display: flex';
-            document.getElementById("dvInputHead").appendChild(resultElements['container']);
+        if (!resultElements.container) {
+            resultElements.container = document.createElement('div');
+            resultElements.container.style.cssText = 'display: flex';
+            document.getElementById("dvInputHead").appendChild(resultElements.container);
         }
 
         if (!resultElements[cat]) {
             resultElements[cat] = document.createElement('div');
-            resultElements[cat].style.cssText = 'background: #f8f8f8; border: 1px solid #ccc; border-radius: 4px; margin-right: 16px; padding: 16px;'; 
+            resultElements[cat].style.cssText = 'background: #f8f8f8; border: 1px solid #ccc; border-radius: 4px; margin-right: 16px; padding: 16px;';
             const catTitle = document.createElement('div');
             catTitle.appendChild(document.createTextNode(cat));
             catTitle.style.cssText = 'font-size: 1.8rem; font-weight:bold; color: rgb(0, 52, 128)';
             resultElements[cat].appendChild(catTitle);
-            resultElements['container'].appendChild(resultElements[cat]);
+            resultElements.container.appendChild(resultElements[cat]);
             console.debug(resultElements[cat]);
         }
         if (!resultElements[cat][type]) {
@@ -59,12 +61,13 @@
 
         const content = document.createElement('ul');
         content.style.cssText = 'list-style-type:none';
-        if (result.empty == 'TRUE') {
+        if (result.slots && result.slots[0] === "empty") {
             const li = document.createElement('li')
             li.style.cssText = 'font-size: 1.3rem; color: #600';
             li.innerHTML = 'None Available.';
             content.appendChild(li);
-        } else {
+        }
+        else {
             result.slots.forEach((slot) => {
                 const li = document.createElement('li')
                 li.style.cssText = 'font-size: 1.3rem; color: #060';
