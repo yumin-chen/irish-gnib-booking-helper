@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Irish GNIB Booking Helper
 // @namespace    https://github.com/chen-yumin/irish-gnib-booking-helper
-// @version      0.4
+// @version      0.5
 // @description  Auto check appointment availability on the Irish GNIB booking page.
 // @author       Chen Yumin
 // @match        https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm
